@@ -121,7 +121,11 @@ Below are example images of Catphan 503.
 Fixing the flexmaps
 ********************
 
-The solution for better image quality and geometric scaling is to slightly shift XVI's isocenter laterally. Your service engineer can easily do this right after flexmap calibration by displacing the detector plate. Another option is to leave the detector plate where it is, but shift the x column of the flexmap files to bring the isocenter to the center of the BB. Figure below shows how the MFOV image improves by applying 0, 0.5 mm and 1 mm shifts to the detector plate (or to flexmap x column).
+The solution for better image quality and geometric scaling is to slightly shift XVI's isocenter laterally. Your service engineer can easily do this right after flexmap calibration by displacing the detector plate. Another option is to leave the detector plate where it is, but shift the x column of the flexmap files to bring the isocenter to the center of the BB. 
+
+Here is an `Excel sheet <https://github.com/brjdenis/synergyqatips/blob/master/files/icomcat.zip>`_ that can do that for you automatically. You can open it in Excel 2016, it contains some VB code. Use it at your own risk. Load the flexmap file you would like to edit, shift the x coordinate, and save it. Then replace the flexmap files with new one. Be sure you know what you are doing!
+
+Figure below shows how the MFOV image improves by applying 0, 0.5 mm and 1 mm shifts to the detector plate (or to flexmap x column).
 
 
 .. figure:: _static/flexshift.png
