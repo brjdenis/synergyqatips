@@ -1,2 +1,5 @@
 # synergyqatips
-QA tips for linear accelerators
+Doing tests on Elekta linacs with pyQAserver (pylinac)
+
+Follow this link:
+
