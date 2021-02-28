@@ -1,2 +1,3 @@
 # Folders to ignore
 docs/build/*
+.vscode
