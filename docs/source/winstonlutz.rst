@@ -199,26 +199,29 @@ Couch axis of rotation and WL test
 
 If you don't use couch rotations, you can skip this part. But, if you are doing radiosurgery, then listen hard.
 
-We know that the gantry sag is about 1.2 mm. What happens if we align the couch axis of rotation with the optical crosshair, that is, with the collimator axis of rotation at gantry 0? Well, the BB will be positioned 0.6 mm away from the collimator axis of rotation, because there is the average MV isocenter. When we rotate the couch, therefore, the BB will not remain stationary like it should. It will instead rotate about the collimator axis of rotation. And when gantry is at 180, the distance between CAX and BB will increase to 1.2 mm, which is too much. The same effect is caused by GT beam deviations (improper Bending Fine).
+We know that gantry sag is about 1.2 mm. What happens if we align the couch axis of rotation with the optical crosshair, that is, with the collimator axis of rotation at gantry 0? Well, the BB will be positioned 0.6 mm away from the collimator axis of rotation. When we rotate the couch, therefore, the BB will not remain stationary like it should. It will instead rotate about the collimator axis of rotation. And when gantry is at 180, the distance between CAX and BB will increase to 1.2 mm, which is too much. The same effect can be caused by GT beam deviations (improper Bending Fine), when your beam is missing the mechanical axis. Anyway, the best way of assuring a good WL result with couch rotation is to deliberately align the couch axis with the average MV isocenter.
 
 .. note::
 	Adjustment of couch axis of rotation is a worthwhile task. You will learn a lot by doing it! Read also: [2]_.
 
 I do this:
 
-1. Put the BB into the average isocenter of the 6 MV beam by doing the non-end-to-end WL test.
+1. Do the normal end-to-end WL test.
 2. Put gantry to 0 and collimator to 0. 
-3. Rotate the couch and acquire an image of the BB for each angle. I use these couch angles: 0, 15, 30, 45, 60, 75, 90, 75, 60, 45, 30, 15, 0, -15, -30, -45, -60, -75, -90, -75, -60, -45, -30, -15, 0, 0. Be sure to go back and see if there is any hysteresis. There will be!
+3. Rotate the couch and acquire an image of the BB for each angle. I use these couch angles: -90, -45, 0, 45, 90. Be sure to go back and see if there is any hysteresis. There will be!
 
-Here is an example measurement.
+Here is an example measurement. Because the couch axis is well adjusted to the average MV isocenter that is represented by the BB, the BB moves about moderately. You can see that the path of the BB forms a semi-circle. The center of the inscribed circle will define the couch axis. What we are interested is how far the couch axis is from the MV center.
 
 .. figure:: _static/couchrot.png
 	:align: center
-	:width: 80 %
+	:width: 100 %
 	
-	*Couch rotation test. Gantry and collimator at 0. BB in the average isocenter of the 6 MV beam. Couch is rotated in 15 degree increments. Because there is a small miss-positioning of the couch axis of rotation (or perhaps a GT deviation of the 6 MV beam), the BB does not stay in position during couch rotation. Note that on the right diagram it is the BB that is fixed, and the CAX is moving. This is just a bad representation of data. It is in fact vice-versa. On the right diagram, dots are marked from 1 to 26 in order of couch angles (see above).*
+	*Couch rotation test. Image on the left shows the usual WL test result. You can see that the MV isocenter and the BB do not match in the longitudinal direction. This will not cause problems when measuring the couch axis position, since we  can transfer the position of the MV isocenter and the BB position onto the epid independently of the position of the BB. On the right image you can observe how the BB moves about when the couch is rotated.  The cross corresponds to the couch axis. The blue square is the position of the MV isocenter on the detector plate calculated from the left image. Red circles are BB positions. Ideally, the blue square and the black cross should coincide.*
 
-Frankly, based on my experience, the above result is good enough. You can see that there is also some BB positional error. 
+Read pyqaserver documentation on how to measure the distance between the couch axis and MV isocenter. What you can do is, you can turn the A and B screws that hold the couch to the floor, until you match the couch axis with the MV isocenter. With a couple of iterations you can better align your couch. Just keep the BB on the couch, but do not touch anything else except the screws. Do not touch the epid, because the points on the diagram are relative to the center of the epid. 
+Read the article that I mentioned previously. If the black cross is displaced only longitudinally, then turn both screws equally in the same direction. That is usually the case. By turning the screws you are also changing the tilt of the table. This could be an issue, so be mindful.
+
+Just another note. If the BB is too close to the axis of rotation, you will not get a clear semi-circle. In this case, deliberately displace the BB a bit.
 
 .. warning::
 	If you position the BB with Elekta's flexmap MV image analysis program, it will be shifted longitudinally by 0.3 mm when compared to Pylinac's calculations. I tested it with other software as well, and Elekta is the only one that is doing it differently. So bear in mind that longitudinal position of XVI's isocenter may be a bit shifted, and hence the couch rotations test may give a different result by up to 0.6 mm.
