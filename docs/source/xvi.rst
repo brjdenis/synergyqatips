@@ -147,14 +147,6 @@ Figure below shows how the MFOV image improves by applying 0, 0.5 mm and 1 mm sh
 Detector skewness
 ********************
 
-Flexmaps are essential for good image quality and geometric accuracy. It can, however, happen that the flexmaps are in perfect condition, but still you may get weird image distortion that increases with distance from the center. This may be caused by improper detector angle. Image below shows such a distortion. This is a cross section of the 3D image of the BB. The center of the BB is nice and round, but going outward the plastic rod is more and more misshaped. At the same time you may notice that the MTF will be reasonably good, but Catphan may have wrong dimensions.
-
-
-.. figure:: _static/detrotationbb.png
-	:align: center
-	:width: 60 %
-	
-	*Misshaped image of the rod because of detector skewness.*
-
+Flexmaps are essential for good image quality and geometric accuracy. It can, however, happen that the flexmaps are in perfect condition, but still you may get weird image distortion that increases with distance from the center. This may be caused by improper detector angle. You can detect this by imaging the BB rod. The center of the BB will be nice and round, but going outward the plastic rod will be more and more misshaped. At the same time you may notice that the MTF will be reasonably good, but Catphan may have wrong dimensions.
 
 When servicing the detector panel great care must be given to every detail. Detector angle error must be minimized before any calibration is performed. A deviation of 1 degree will give you an unacceptable image. Detector angle can be measured with pyqaserver.
