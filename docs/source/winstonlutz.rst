@@ -301,4 +301,4 @@ We pose the question: what is achievable on VersaHD with respect to the Winston-
 Are four gantry angles good enough for the WL test?
 ******************************************************
 
-A simple experiment can be done. Instead of doing the test at four gantry angles, we do it for angles -180, -170, -160, ..., 170, 180. It turns out that four gantry angles are quite sufficient, the difference in the WL results between 8 and 37 images is less than 0.1 mm max. Similarly, collimator rotation can be investigated with more images, but the main results will not change by more than 0.1 mm. 
+A simple experiment can be done. Instead of doing the test at four gantry angles, we do it for angles -180, -170, -160, ..., 170, 180. It turns out that four gantry angles are quite sufficient, the difference in the WL results between 8 and 37 images is less than 0.1 mm max. Similarly, collimator rotation can be investigated with more images, but the main results will not change by more than 0.1 mm.. 
