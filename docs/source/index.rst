@@ -12,7 +12,6 @@ This page contains some notes about doing interesting tests on Elekta linacs wit
 	The content on this site is based on my personal experience. It was not reviewed or approved by anybody. The notes are provided "as is", and use them "at your own risk". So, beware. And read this disclaimer before you read further: :doc:`disclaimer`.
 
 
-Denis Brojan
 
 Last change: |today|.
 
