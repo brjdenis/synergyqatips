@@ -3,11 +3,10 @@
 =======================
 License and disclaimer
 =======================
-The same conditions apply as for the QAserver software.
 
 MIT License
 
-Copyright (c) 2019 Denis Brojan
+Copyright (c) 2026 Denis Brojan
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

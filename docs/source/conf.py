@@ -17,11 +17,11 @@ sys.path.insert(0, os.path.abspath('.'))
 # -- Project information -----------------------------------------------------
 
 project = 'SynergyQAtips'
-copyright = '2020, Denis Brojan'
+copyright = '2026, Denis Brojan'
 author = 'Denis Brojan'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+release = '0.0.2'
 
 
 # -- General configuration ---------------------------------------------------

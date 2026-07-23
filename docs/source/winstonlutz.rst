@@ -23,6 +23,46 @@ If you are doing the test with 6 FFF or 10 FFF, or for SRS, go with smaller beam
 	:scale: 80 %
 
 
+==================================================
+What are the three main results of the WL test?
+==================================================
+
+The WL test as described here is performed with a sequence of eight images:
+
++------------+-----+-----+-----+-----+----+-----+-----+----+
+| Image      | 1   | 2   | 3   | 4   | 5  | 6   | 7   | 8  |
++------------+-----+-----+-----+-----+----+-----+-----+----+
+| Gantry     | 180 | 180 | 270 | 270 | 0  | 0   | 90  | 90 |
++------------+-----+-----+-----+-----+----+-----+-----+----+
+| Collimator | 90  | 270 | 270 | 90  | 90 | 270 | 270 | 90 |
++------------+-----+-----+-----+-----+----+-----+-----+----+
+
+
+The three main results of the WL test are:
+
+* The BB-isocenter displacement vector X = (LAT, LONG, VRT). This is the vector between the BB and the average (ideal) MV isocenter.
+* The lateral deviation of the beam, LATDEV. This tells you how much the beam is "shifted" in the A-B direction.
+* Collimator asymmetry. Since for each gantry angle two images are taken at opposite collimator angles, one can estimate the amount of collimator asymmetry.
+
+All three results are determined independently from each other. They are calculated from the WL test like so:
+
+.. math::
+
+   \mathrm{LAT} &= \frac{-x_1-x_2+x_5+x_6}{4}
+
+   \mathrm{VRT} &= \frac{x_3+x_4-x_7-x_8}{4}
+
+   \mathrm{LONG} &= \frac{y_1+y_2+y_3+y_4+y_5+y_6+y_7+y_8}{8}
+
+   \mathrm{LATDEV} &= \frac{x_1+x_2+x_3+x_4+x_5+x_6+x_7+x_8}{8}
+
+   \mathrm{COLLASYM}_x &= \frac{\left|x_1-x_2\right|}{2}
+
+   \mathrm{COLLASYM}_y &= \frac{\left|y_1-y_2\right|}{2}
+
+Here *x* and *y* are coordinates of the the center of the field with respect to the center of the BB on each 2D image.
+
+
 ****************************************************
 Influence of dose rate on focal spot position
 ****************************************************
@@ -36,7 +76,7 @@ Although the Field size module is more appropriate for this measurement, it is e
 	
 	*The drift of field CAX with increasing dose rate. On the left 6 MV, on the right 6 FFF. The red cross is the BB, which is stationary. Yellow dots are EPID centers, which are also stationary. Blue dots are field CAX. This is a BEV diagram, x is in the AB direction, y in the TG direction.*
 
-The same can be seen on the regular Winston-Lutz test with 8-image acquistion. See the image below.
+The same can be seen on the regular Winston-Lutz test with 8-image acquisition. See the image below.
 
 .. figure:: _static/wldr.png
 	:align: center
@@ -162,6 +202,22 @@ And the proposed shifts of the BB. Calculations show that the BB is almost in th
 	Lateral beam deviations can be clinically important. Particularly when treating well positioned anatomy like the spine with high doses. Longitudinal deviations in this case are not as important, but unlike lateral deviations longitudinal can be compensated by XVI. If you think about it, if your 6 MV beam has a 0.5 mm displacement towards G, then flexmap calibration will teach XVI that the isocenter is positioned 0.5 mm towards G. So no miss-treatment will occur (well, not exactly ... there is another effect that comes up with collimator rotation if the focal spot it not in the right position). 
 
 
+******************************************************
+Should I adjust the 6 FFF beam symmetry or leave it?
+******************************************************
+
+An interesting question arises: we measure 6 FFF and 10 FFF beam asymmetry with a flat panel detector without a compensator. It looks like it needs adjusting by, say 1.5 %. Do we do it? The short answer is: no, unless you also measure the focal spot position with the WL test.
+
+If you have a small deviation in beam symmetry, say 1 % or maybe 1.5 %, you have to be really really sure that you are measuring symmetry correctly. If the center of your profile is not truly on the collimator axis of rotation, you may get wrong results for the asymmetry of the beam (if you calculate asymmetry by using opposite points across the center). This doesn't happen for flattened beams. If you adjust the steering of the beam (2T, for example) to improve the symmetry, it will require a large change in steering current. And this will shift the beam a lot! So much that the WL test will fail. See image below. Why does this happen? Well, FFF beams do not go through the flattening filter. Hence small adjustment of the focal spot position will not influence symmetry greatly, a big change is needed. To be sure the beam is well calibrated one must do good measurements in the water tank where one can observe the symmetry of the beam as well as its (approximate) center. But that is another topic.
+
+
+.. figure:: _static/steeringchangesFFF.png
+	:align: center
+	:width: 100 %
+	
+	*During routine quality assurance with a flat panel detector without a compensator it was determined that the asymmetry of 6 FFF was 1.5 %. Steering current 2T was adjusted. After the adjustment the WL test showed a large 2 mm lateral deviation of the beam..*
+
+
 ************************
 Non-end-to-end WL test
 ************************
@@ -229,6 +285,20 @@ Just another note. If the BB is too close to the axis of rotation, you will not 
 .. [2] Matthew J. Nyflot, Ning Cao, Juergen Meyer, Eric C. Ford, *Improved accuracy for noncoplanar radiotherapy: an EPID-based method for submillimeter alignment of linear accelerator table rotation with MV isocenter*, J Appl Clin Med Phys. 2014 Mar 6;15(2):4682
 
 
+***********************************
+How good can it get?
+***********************************
 
+We pose the question: what is achievable on VersaHD with respect to the Winston-Lutz results? The Winston-Lutz test gives you three main systematic deviations that are independently calculated. These are: the displacement of the BB with respect to the average MV isocenter (vector X = (LAT, LONG, VRT)); lateral deviation of the beam (LATDEV) and collimator asymmetry (ASYM). Suppose we remove the three components from the WL results after each test. What would the end result be? Image bellow shows a collection of WL results over a period of one year, performed on Versa HD for 6 MV. The first image a) shows the raw results. One can see quite a lot of spread in all directions. Points are colored depending on gantry angle. For each gantry angle there are two points. Image b) has  X displacement removed from each WL measurement. There is some improvement. Image c) additionally removes lateral deviation of the beam. One can now see much less spread of points around the average MV isocenter. The remaining systematic error is the collimator asymmetry. Image d) additionally remove that as well. One can than easily see that in ideal conditions the remaining source of targeting error comes from gantry/collimator sag which cannot be removed physically. All other errors can be decreased by proper servicing.
 
+.. figure:: _static/trends_targeting.png
+	:align: center
+	:width: 100 %
+	
+	*Trends of the WL test over a period of one year, performed on VersaHD with 6 MV. Image a = raw results. Image b = displacement vector (between the BB and the average MV isocenter) is removed. Image c = additionally lateral deviation is removed. Image d = additionally collimator asymmetry is removed.*
 
+******************************************************
+Are four gantry angles good enough for the WL test?
+******************************************************
+
+A simple experiment can be done. Instead of doing the test at four gantry angles, we do it for angles -180, -170, -160, ..., 170, 180. It turns out that four gantry angles are quite sufficient, the difference in the WL results between 8 and 37 images is less than 0.1 mm max. Similarly, collimator rotation can be investigated with more images, but the main results will not change by more than 0.1 mm. 
