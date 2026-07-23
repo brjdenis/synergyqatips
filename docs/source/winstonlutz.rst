@@ -23,9 +23,9 @@ If you are doing the test with 6 FFF or 10 FFF, or for SRS, go with smaller beam
 	:scale: 80 %
 
 
-==================================================
+****************************************************
 What are the three main results of the WL test?
-==================================================
+****************************************************
 
 The WL test as described here is performed with a sequence of eight images:
 
